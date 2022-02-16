@@ -2,6 +2,8 @@
 
 ## Set up Environment
 
+I recommend you create python virtual environment for cleaner workplace:
+
 Create new environment:
 ```
   python3 -m venv env/
@@ -15,3 +17,11 @@ Install python modules needed for this project
 ```
   pip install -r requirements.txt
 ```
+
+You would need something to expose your local host to rest of the world. For testing and demo purposes I recommend [ngrok](https://ngrok.com/download), but for actual deployment you should get a better service (e.g. Heroku, AWS, Azure, etc...)
+
+To use ngrok:
+```
+  ngrok http 5004
+```
+_Or any other port instead of 5004 (in this project I just picked 5004, but you can change that in the code if needed)_
