@@ -1,11 +1,18 @@
-from flask import Flask, request, render_template
-
+from flask import Flask, request, render_template, redirect
+import sys
 
 app = Flask(__name__)
 
+@app.route("/", methods=["GET"])
+def get_main():
+    """
+        Simply redirect from main URL to splash page.
+    """
+    return redirect("/splash")
+
 
 @app.route("/splash", methods=["GET"])
-def get_click():
+def get_splash():
     global base_grant_url
     global user_continue_url
     global success_url
@@ -24,6 +31,38 @@ def get_click():
     return render_template("index.html", client_ip=client_ip,
     client_mac=client_mac, node_mac=node_mac,
     user_continue_url=user_continue_url,success_url=success_url)
+
+
+@app.route("/login", methods=["POST"])
+def get_login():
+    """ 
+        For getting information when user gets redirected to splash page.
+    """
+
+    # print('Login...')
+
+    user_name = request.form['user_name']
+    user_email = request.form['user_email']
+    user_phone = request.form['user_phone']
+    user_company = request.form['user_company']
+
+    print(user_name, file=sys.stderr)
+    print(user_email, file=sys.stderr)
+    print(user_phone, file=sys.stderr)
+    print(user_company, file=sys.stderr)
+
+    return redirect("/success")
+
+
+@app.route("/success",methods=["GET"])
+def get_success():
+    """
+        After successful log-in, redirect user to link based on their interest list.
+    """
+
+    print("Success", file=sys.stderr)
+
+    return render_template("success.html")
 
 
 if __name__ == "__main__":
