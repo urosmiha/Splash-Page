@@ -18,7 +18,7 @@ Install python modules needed for this project
   pip install -r requirements.txt
 ```
 
-You would need something to expose your local host to rest of the world. For testing and demo purposes I recommend [ngrok](https://ngrok.com/download), but for actual deployment you should get a better service (e.g. Heroku, AWS, Azure, etc...)
+You would need something to expose your local host to rest of the world. For testing and demo purposes I recommend [ngrok](https://dashboard.ngrok.com/get-started/setup), but for actual deployment you should get a better service (e.g. Heroku, AWS, Azure, etc...)
 
 To use ngrok:
 ```
