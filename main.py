@@ -36,7 +36,8 @@ def get_splash():
 @app.route("/login", methods=["POST"])
 def get_login():
     """ 
-        For getting information when user gets redirected to splash page.
+        For getting information when user completes splash page.
+        It will capture information and redirect user to success or fail page.
     """
 
     # print('Login...')
@@ -57,7 +58,7 @@ def get_login():
 @app.route("/success",methods=["GET"])
 def get_success():
     """
-        After successful log-in, redirect user to link based on their interest list.
+        Successful log-in.
     """
 
     print("Success", file=sys.stderr)
@@ -65,6 +66,11 @@ def get_success():
     return render_template("success.html")
 
 
+@app.route("/denied",methods=["GET"])
+def get_denied():
+    return "Access denied... Contact administrator"
+
+
 if __name__ == "__main__":
     # Hosted on localhost port 5004 - Remember to run "ngrok http 5004"
-    app.run(host="0.0.0.0", port=5004, debug=False)
+    app.run(host="127.0.0.1", port=5004, debug=False)
