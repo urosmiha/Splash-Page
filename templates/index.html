@@ -1,29 +1,14 @@
 <!--
-This sample web application provides a simple Click-Through Splash page for Cisco Meraki networks.
-Usage:
-* Configure your Cisco Meraki wireless network with a Click-through splash page.
-* Configure the "Custom URL" to point to your webserver that is hosting this HTML file.
-* Update the "Walled Garden" with the IP or Domain Name for your webserver and any supporting resources
-* Add any additional logic to forward the form data to your preferred service. By default, a simple alert
-displays the results of one form entry and then prints the Meraki provided parameters in the the footer. 
+Credit to Cory Guynn (http://www.InternetOfLEGO.com) for providing the initial template upon which I build on further.
 
-Sample URL received from Meraki to this page.
-http://localhost:5000/?base_grant_url=https%3A%2F%2Fn143.network-auth.com%2Fsplash%2Fgrant&user_continue_url=http%3A%2F%2Fspeedof.me%2F&node_id=149624922840090&node_mac=88:15:44:60:1c:1a&gateway_id=149624922840090&client_ip=10.255.60.208&client_mac=f4:5c:89:9b:17:67
-
-
-This is example was written by:
-Cory Guynn
-www.InternetOfLEGO.com
-2016
-
-LICENSE: MIT
+LICENSE:
 "Have Fun!, use and abuse"
 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <html>
     <head>
       <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
-      <script type="text/javascript" src="{{ url_for('static', filename='index.js') }}"></script>
+      <!-- <script type="text/javascript" src="{{ url_for('static', filename='index.js') }}"></script> -->
     </head>
     <div class="container">  
       
@@ -50,9 +35,11 @@ LICENSE: MIT
     </div>
     <hr>
     <h4>Debugging Stats</h4>
-    <p><label>Base Grant URL: </label><label id="baseGrantURL"></label></p>
-    <p><label>User Continue URL: </label><label id="userContinueURL"></label></p>
-    <p><label>Client IP: </label><label id="clientIP"></label></p>
-    <p><label>Client MAC: </label><label id="clientMAC"></label></p>
-    <p><label>Access Point MAC: </label><label id="nodeMAC"></label></p>
+    <p><label>Base Grant URL: {{base_grant_url}}</label><label id="base_grant_url"></label></p>
+    <p><label>User Continue URL: {{user_continue_url}}</label><label id="user_continue_url"></label></p>
+    <p><label>Client IP: {{client_ip}}</label><label id="client_ip"></label></p>
+    <p><label>Client MAC: {{client_mac}}</label><label id="client_mac"></label></p>
+    <p><label>Access Point MAC: {{node_mac}}</label><label id="node_mac"></label></p>
+    <p><label>Access Point ID: {{node_id}}</label><label id="node_id"></label></p>
+    <p><label>Gateway ID: {{gateway_id}}</label><label id="gateway_id"></label></p>
 </html>
