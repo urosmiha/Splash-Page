@@ -28,6 +28,12 @@ To use ngrok:
 ```
 _Or any other port instead of 5004 (in this project I just picked 5004, but you can change that in the code if needed)_
 
+
+### Alternatively
+You can have a local server host the splash page, but __note__ it needs to be on the same VLAN as the client.
+
+For example, if your SSID is tagged on VLAN 20 (i.e. Guest VLAN) then your server must be on the same subnet. otherwise, the Splash Page will not be disaplyed for the client.
+
 ## Configure Meraki Dashboard
 
 In this example we have two options to configure
