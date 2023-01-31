@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template, redirect
 import sys
 
+# Define global variables to be used across functions
 global base_grant_url
 base_grant_url = ""
 global user_continue_url
@@ -17,6 +18,8 @@ global node_id
 node_id = ""
 global gateway_id
 gateway_id = ""
+global user_name
+user_name = ""
 
 app = Flask(__name__)
 
@@ -81,15 +84,17 @@ def get_login():
 
     # print('Login...')
 
+    global user_name
+
     user_name = request.form['user_name']
     user_email = request.form['user_email']
     user_phone = request.form['user_phone']
-    user_company = request.form['user_company']
+    user_age = request.form['user_age']
 
     print(user_name, file=sys.stderr)
     print(user_email, file=sys.stderr)
     print(user_phone, file=sys.stderr)
-    print(user_company, file=sys.stderr)
+    print(user_age, file=sys.stderr)
 
     return redirect("/success")
 
@@ -105,10 +110,14 @@ def get_success():
     """
     global base_grant_url
     global user_continue_url
+    global user_name
 
     # You can leverage this to make changes to the continue_url (e.g where user will be redirected)
     # This can be used for targeted marketing or relevant info based on user input on the captive portal page.
     override_continue_url = "https://meraki.com"
+
+    if user_name == "mrdiy":
+        override_continue_url = "https://www.mrdiy.com/sg/promotion/"
 
     # Otherwise, just use the same url user was trying to get to in the first place
     # override_continue_url = user_continue_url
@@ -130,4 +139,5 @@ def get_denied():
 
 if __name__ == "__main__":
     # Hosted on localhost port 5004 - Remember to run "ngrok http 5004"
-    app.run(host="127.0.0.1", port=5004, debug=False)
+    # app.run(host="127.0.0.1", port=5004, debug=False)
+    app.run(host="0.0.0.0", port=5004, debug=False)

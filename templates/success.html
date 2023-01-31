@@ -1,3 +1,42 @@
-<h1>Success</h1>
-<p>Click on the following link to confirm</p>
-{{success_html}}
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+
+    body {
+        font-family: Helvetica, Arial, sans-serif;
+        font-weight: 100;
+        font-size: 12px;
+        line-height: 30px;
+        color: #777; 
+    }
+    button[type="submit"] {
+        cursor: pointer;
+        width: 100%;
+        border: none;
+        background: #4CAF50;
+        color: #FFF;
+        margin: 0 0 5px;
+        padding: 10px;
+        font-size: 15px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+  </style>
+</head>
+<body>
+    <div class="container">  
+        <center><a href="http://developers.meraki.com"><img src="{{ url_for('static', filename='meraki-logo.png') }}" width="50%"/></a></center>
+        <br>
+        <h1>Success!</h1>
+        <!-- <button type="submit" href={{success_html}}>Continue to Internet</button> -->
+        <body>
+            <p>Click on the following link to confirm</p>
+            {{success_html}}
+        </body>
+    </div>
+</body>
+</html>
